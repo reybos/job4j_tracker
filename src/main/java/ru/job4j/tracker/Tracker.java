@@ -35,7 +35,6 @@ public class Tracker {
         if (rsl) {
             item.setId(id);
             items[index] = item;
-            rsl = true;
         }
         return rsl;
     }
@@ -49,7 +48,6 @@ public class Tracker {
             System.arraycopy(items, copyFrom, items, index, length);
             items[size - 1] = null;
             size--;
-            rsl = true;
         }
         return rsl;
     }
