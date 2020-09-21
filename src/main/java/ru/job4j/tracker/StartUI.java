@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    public static void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
-            StartUI.showMenu();
+            this.showMenu();
             int select = input.askInt("Select: ");
             System.out.println();
             if (select == 0) {
@@ -26,7 +26,7 @@ public class StartUI {
         }
     }
 
-    private static void showMenu() {
+    private void showMenu() {
         System.out.println("Menu.");
         System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
@@ -103,6 +103,6 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        StartUI.init(input, tracker);
+        new StartUI().init(input, tracker);
     }
 }
