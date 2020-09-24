@@ -14,6 +14,7 @@
 </ul>
 <h2>Интересные моменты</h2>
 <ul>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/a58d1785c10198cda033c863257130bc39d99a83">Удалили</a> зависимость StartUI от внешних ресурсов</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/a58d1785c10198cda033c863257130bc39d99a83">Удалили</a> зависимость StartUI от внешних ресурсов (Scanner)</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/fd96dec057015d842fd711148bea39398baa3eff">Удалили</a> зависимость классов от внешних ресурсов (System.out)</li>
   <li><a href="https://github.com/ReyBos/job4j_tracker/commit/4e623b37c1e3905dcba94e4855a374b7c3c7609e">Реализовали</a> StartUI за счет шаблона стратегия</li>
 </ul>
