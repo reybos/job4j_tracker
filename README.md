@@ -16,5 +16,6 @@
 <ul>
   <li><a href="https://github.com/ReyBos/job4j_tracker/commit/a58d1785c10198cda033c863257130bc39d99a83">Удалили</a> зависимость StartUI от внешних ресурсов (Scanner)</li>
   <li><a href="https://github.com/ReyBos/job4j_tracker/commit/fd96dec057015d842fd711148bea39398baa3eff">Удалили</a> зависимость классов от внешних ресурсов (System.out)</li>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/4e623b37c1e3905dcba94e4855a374b7c3c7609e">Реализовали</a> StartUI за счет шаблона стратегия</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/4e623b37c1e3905dcba94e4855a374b7c3c7609e">Реализовали</a> StartUI за счет шаблона стратегия. Этот шаблон позволяет изменить алгоритм работы программы в запущенной программе</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/commit/3d2b5d99ad0946027da1638f5916ff73d133792d">Шаблон декоратор</a> для валидатора. Смысл Декоратора - добавление нового поведения в уже существующее поведение
 </ul>
