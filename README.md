@@ -19,3 +19,16 @@
   <li>Реализовали StartUI за счет <a href="https://github.com/ReyBos/job4j_tracker/commit/4e623b37c1e3905dcba94e4855a374b7c3c7609e">шаблона стратегия</a>. Этот шаблон позволяет изменить алгоритм работы программы в запущенной программе</li>
   <li><a href="https://github.com/ReyBos/job4j_tracker/commit/3d2b5d99ad0946027da1638f5916ff73d133792d">Шаблон декоратор</a> для валидатора. Смысл Декоратора - добавление нового поведения в уже существующее поведение
 </ul>
+<h3>Singleton</h3>
+<p><a href="https://github.com/ReyBos/job4j_tracker/commit/d0a45990f29985c67a8ff15816abb7792bd0496a">Шаблон singleton</a> - используется для создания класса, который может содержать только один экземпляр объекта в виртуальной машине. Шаблон singleton применять в проектах, где используются работы с внешними ресурсами: базы данных, серверы. Шаблон может быть с ленивой и энергичной загрукой.</p>
+<ul>
+  <li>Ленивая загрузка (Lazy loading) происходит, когда мы явно обращаемся к объекту. Происходит его загрузка.</li>
+  <li>Энергичная загрузка (Eager loading) - загружает объект сразу после старта виртуальной машины.</li>
+</ul>
+<h4>Варианты реализации</h4>
+<ol>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleEnum.java">enum</a>. Eager loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleField.java">static field</a>. Lazy loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleFinalField.java">static final field</a>. Eager loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleFinalClass.java">private static final class</a>. Lazy loading.</li>
+</ol>
