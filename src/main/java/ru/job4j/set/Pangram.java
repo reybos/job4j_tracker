@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Pangram {
     public static boolean checkString(String s) {
-        s = s.replaceAll("\\s+","");
+        s = s.replaceAll("\\s+", "");
         s = s.toLowerCase();
         Set<String> chars = new HashSet<>();
         chars.addAll(Arrays.asList(s.split("")));
