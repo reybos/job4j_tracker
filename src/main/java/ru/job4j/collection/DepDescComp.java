@@ -7,8 +7,22 @@ import java.util.List;
 public class DepDescComp implements Comparator<String> {
     @Override
     public int compare(String o1, String o2) {
-        List<String> depart1 = Departments.fillGaps(Arrays.asList(o1));
-        List<String> depart2 = Departments.fillGaps(Arrays.asList(o2));
-        return depart1.get(0).equals(depart2.get(0)) ? o1.compareTo(o2) : o2.compareTo(o1);
+        String[] depart1 = o1.split("/");
+        String[] depart2 = o2.split("/");
+        int rsl = depart2[0].compareTo(depart1[0]);
+        if (rsl != 0) {
+            return rsl;
+        }
+        int length = Math.min(depart1.length, depart2.length);
+        for (int i = 1; i < length; i++) {
+            rsl = depart1[i].compareTo(depart2[i]);
+            if (rsl != 0) {
+                break;
+            }
+        }
+        if (rsl == 0 && depart1.length != depart2.length) {
+            rsl = Integer.compare(depart1.length, depart2.length);
+        }
+        return rsl;
     }
 }
