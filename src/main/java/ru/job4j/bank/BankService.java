@@ -1,10 +1,7 @@
 package ru.job4j.bank;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BankService {
@@ -25,21 +22,21 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        List<User> rsl = users.keySet().stream()
+        Optional<User> rsl = users.keySet().stream()
                 .filter(user -> user.getPassport().equals(passport))
-                .collect(Collectors.toList());
-        return rsl.size() > 0 ? rsl.get(0) : null;
+                .findFirst();
+        return rsl.orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
+        Optional<Account> rsl = Optional.empty();
         if (user != null) {
-            List<Account> rsl = users.get(user).stream()
+            rsl = users.get(user).stream()
                     .filter(elem -> elem.getRequisite().equals(requisite))
-                    .collect(Collectors.toList());
-            return rsl.size() > 0 ? rsl.get(0) : null;
+                    .findFirst();
         }
-        return null;
+        return rsl.orElse(null);
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
