@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class FullSearchTest {
     @Test
     public void extractNumber() {
-        List<Task> tasks = Arrays.asList(
+        List<Task> tasks = List.of(
                 new Task("1", "First desc"),
                 new Task("2", "Second desc"),
                 new Task("1", "First desc")
