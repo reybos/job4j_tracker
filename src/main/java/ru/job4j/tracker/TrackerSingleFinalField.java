@@ -2,13 +2,13 @@ package ru.job4j.tracker;
 
 public class TrackerSingleFinalField {
     private static final TrackerSingleFinalField INSTANCE = new TrackerSingleFinalField();
-    private Tracker tracker;
+    private MemTracker tracker;
 
     private TrackerSingleFinalField() {
-        this.tracker = new Tracker();
+        this.tracker = new MemTracker();
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 

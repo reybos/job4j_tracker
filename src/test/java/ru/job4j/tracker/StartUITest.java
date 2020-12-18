@@ -1,33 +1,43 @@
 package ru.job4j.tracker;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 public class StartUITest {
+    private Store tracker;
+
+    @Before
+    public void init() {
+        tracker = new SqlTracker();
+        tracker.init();
+    }
+
     @Test
-    public void whenCreateItem() {
+    public void whenCreateItem() throws SQLException {
         Output out = new ConsoleOutput();
         Input input = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(out));
         actions.add(new ExitAction());
         new StartUI(out).init(input, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
+        List<Item> rsl = tracker.findAll();
+        assertThat(rsl.get(0).getName(), is("Item name"));
+        tracker.delete(rsl.get(0).getId());
     }
 
     @Test
-    public void whenReplaceItem() {
+    public void whenReplaceItem() throws SQLException {
         Output out = new ConsoleOutput();
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input input = new StubInput(
@@ -37,13 +47,14 @@ public class StartUITest {
         actions.add(new EditAction(out));
         actions.add(new ExitAction());
         new StartUI(out).init(input, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is(replacedName));
+        List<Item> rsl = tracker.findAll();
+        assertThat(rsl.get(0).getName(), is(replacedName));
+        tracker.delete(rsl.get(0).getId());
     }
 
     @Test
-    public void whenDeleteItem() {
+    public void whenDeleteItem() throws SQLException {
         Output out = new ConsoleOutput();
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item());
         List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteAction(out));
@@ -61,7 +72,6 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitAction());
         new StartUI(out).init(in, tracker, actions);
@@ -77,7 +87,6 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "1"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAllAction(out));
         actions.add(new ExitAction());
@@ -99,7 +108,6 @@ public class StartUITest {
         Input input = new StubInput(
                 new String[] {"0", "1", "1"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByIdAction(out));
         actions.add(new ExitAction());
@@ -117,9 +125,8 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindById() {
+    public void whenFindById() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Test"));
         Input input = new StubInput(
                 new String[] {"0", Integer.toString(item.getId()), "1"}
@@ -136,12 +143,12 @@ public class StartUITest {
                         + "Item{"
                         + "id=" + item.getId()
                         + ", name='" + item.getName() + '\''
-                        + ", created=" + item.getCreated().toString()
                         + "}" + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
                         + "0. Find item by Id" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
         ));
+        tracker.delete(item.getId());
     }
 
     @Test
@@ -150,7 +157,6 @@ public class StartUITest {
         Input input = new StubInput(
                 new String[] {"0", "test name", "1"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByNameAction(out));
         actions.add(new ExitAction());
@@ -168,9 +174,8 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindByName() {
+    public void whenFindByName() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Test"));
         Input input = new StubInput(
                 new String[] {"0", item.getName(), "1"}
@@ -187,12 +192,12 @@ public class StartUITest {
                         + "Item{"
                         + "id=" + item.getId()
                         + ", name='" + item.getName() + '\''
-                        + ", created=" + item.getCreated().toString()
                         + "}" + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit Program" + System.lineSeparator()
         ));
+        tracker.delete(item.getId());
     }
 
     @Test
@@ -201,7 +206,6 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"1", "0"}
         );
-        Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitAction());
         new StartUI(out).init(in, tracker, actions);

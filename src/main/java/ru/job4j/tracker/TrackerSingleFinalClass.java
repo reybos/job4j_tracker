@@ -3,13 +3,13 @@ package ru.job4j.tracker;
 import java.util.List;
 
 public class TrackerSingleFinalClass {
-    private Tracker tracker;
+    private MemTracker tracker;
 
     private TrackerSingleFinalClass() {
-        this.tracker = new Tracker();
+        this.tracker = new MemTracker();
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 

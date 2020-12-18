@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public class TrackerSingleFinalFieldTest {
+public class MemTrackerSingleFinalFieldTest {
     @Test
     public void whenManyInstanceOneObject() {
         TrackerSingleFinalField tracker = TrackerSingleFinalField.getInstance();

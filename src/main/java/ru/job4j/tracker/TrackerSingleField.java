@@ -2,10 +2,10 @@ package ru.job4j.tracker;
 
 public class TrackerSingleField {
     private static TrackerSingleField instance;
-    private Tracker tracker;
+    private MemTracker tracker;
 
     private TrackerSingleField() {
-        this.tracker = new Tracker();
+        this.tracker = new MemTracker();
     }
 
     public static TrackerSingleField getInstance() {
@@ -15,7 +15,7 @@ public class TrackerSingleField {
         return instance;
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 }

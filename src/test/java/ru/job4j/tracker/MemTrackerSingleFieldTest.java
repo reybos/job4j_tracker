@@ -4,11 +4,11 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public class TrackerSingleEnumTest {
+public class MemTrackerSingleFieldTest {
     @Test
     public void whenManyInstanceOneObject() {
-        TrackerSingleEnum tracker = TrackerSingleEnum.INSTANCE;
-        TrackerSingleEnum tracker2 = TrackerSingleEnum.INSTANCE;
+        TrackerSingleField tracker = TrackerSingleField.getInstance();
+        TrackerSingleField tracker2 = TrackerSingleField.getInstance();
         assertThat(tracker, is(tracker2));
     }
 }

@@ -2,13 +2,13 @@ package ru.job4j.tracker;
 
 public enum TrackerSingleEnum {
     INSTANCE;
-    private Tracker tracker;
+    private MemTracker tracker;
 
     TrackerSingleEnum() {
-        this.tracker = new Tracker();
+        this.tracker = new MemTracker();
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 }
