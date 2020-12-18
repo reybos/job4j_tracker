@@ -10,9 +10,10 @@
 </p>
 <h2>Структура проекта</h2>
 <ul>
-  <li>Данные будут храниться в памяти. Хранилище будет описывать класс <a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/Tracker.java">ru.job4j.memTracker.MemTracker</a></li>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/Item.java">ru.job4j.memTracker.Item</a> объект этого класса будет описывать модель данных</li>
-  <li>Объект для управления меню <a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/StartUI.java">ru.job4j.memTracker.StartUI</a></li>
+  <li>Данные будут храниться в памяти. Хранилище будет описывать класс <a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/MemTracker.java">ru.job4j.tracker.MemTracker</a></li>
+  <li>Так же описано хранилище основанное на базе данных <a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/SqlTracker.java">ru.job4j.tracker.SqlTracker</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/Item.java">ru.job4j.tracker.Item</a> объект этого класса будет описывать модель данных</li>
+  <li>Объект для управления меню <a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/StartUI.java">ru.job4j.tracker.StartUI</a></li>
 </ul>
 <h2>Интересные моменты</h2>
 <ul>
@@ -30,8 +31,8 @@
 </ul>
 <h4>Варианты реализации</h4>
 <ol>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/TrackerSingleEnum.java">enum</a>. Eager loading.</li>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/TrackerSingleField.java">static field</a>. Lazy loading.</li>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/TrackerSingleFinalField.java">static final field</a>. Eager loading.</li>
-  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/memTracker/TrackerSingleFinalClass.java">private static final class</a>. Lazy loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleEnum.java">enum</a>. Eager loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleField.java">static field</a>. Lazy loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleFinalField.java">static final field</a>. Eager loading.</li>
+  <li><a href="https://github.com/ReyBos/job4j_tracker/blob/master/src/main/java/ru/job4j/tracker/TrackerSingleFinalClass.java">private static final class</a>. Lazy loading.</li>
 </ol>
