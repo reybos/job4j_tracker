@@ -83,26 +83,40 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() throws SQLException {
-        List<Item> items = new ArrayList<>();
-        try (PreparedStatement statement = cn.prepareStatement("select * from items")) {
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name")
-                    ));
-                }
-            }
-        }
-        return items;
+        Item searchedItem = new Item();
+        String sql = "select * from items";
+        BiConsumerException<PreparedStatement, Item> func = (statement, item) -> { };
+        return select(searchedItem, sql, func);
     }
 
     @Override
     public List<Item> findByName(String key) throws SQLException {
+        Item searchedItem = new Item(key);
+        String sql = "select * from items where name = ?";
+        BiConsumerException<PreparedStatement, Item> func = (statement, item) -> {
+            statement.setString(1, item.getName());
+        };
+        return select(searchedItem, sql, func);
+    }
+
+    @Override
+    public Item findById(int id) throws SQLException {
+        Item searchedItem = new Item(id);
+        String sql = "select * from items where id = ?";
+        BiConsumerException<PreparedStatement, Item> func = (statement, item) -> {
+            statement.setInt(1, item.getId());
+        };
+        List<Item> rsl = select(searchedItem, sql, func);
+        return rsl.size() == 1 ? rsl.get(0) : null;
+    }
+
+    private List<Item> select(
+            Item item, String sql, BiConsumerException<PreparedStatement, Item> func
+    ) throws SQLException {
         List<Item> items = new ArrayList<>();
         try (PreparedStatement statement =
-                     cn.prepareStatement("select * from items where name = ?")) {
-            statement.setString(1, key);
+                     cn.prepareStatement(sql)) {
+            func.accept(statement, item);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
@@ -113,24 +127,5 @@ public class SqlTracker implements Store {
             }
         }
         return items;
-    }
-
-    @Override
-    public Item findById(int id) throws SQLException {
-        Item rsl = null;
-        try (PreparedStatement statement = cn.prepareStatement(
-                "select * from items where id = ?"
-        )) {
-            statement.setInt(1, id);
-            try (ResultSet item = statement.executeQuery()) {
-                while (item.next()) {
-                    rsl = new Item(
-                            item.getInt("id"),
-                            item.getString("name")
-                    );
-                }
-            }
-        }
-        return rsl;
     }
 }
