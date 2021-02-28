@@ -40,7 +40,6 @@ public class StartUI {
         Output out = new ConsoleOutput();
         Input input = new ValidateInput(new ConsoleInput(), out);
         try (Store tracker = new MemTracker()) {
-            tracker.init();
             List<UserAction> actions = new ArrayList<>();
             actions.add(new CreateAction(out));
             actions.add(new ShowAllAction(out));

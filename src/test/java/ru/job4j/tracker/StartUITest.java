@@ -16,8 +16,7 @@ public class StartUITest {
 
     @Before
     public void init() {
-        tracker = new SqlTracker();
-        tracker.init();
+        tracker = new HbmTracker();
     }
 
     @Test
